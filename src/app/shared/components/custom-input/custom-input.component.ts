@@ -14,9 +14,24 @@ export class CustomInputComponent  implements OnInit {
   @Input() autocomplete!: string;
   @Input() icon!: string;
 
+  isPassword!:boolean;
+  hide: boolean = true;
+
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isPassword = this.type === 'password';
+  }
+
+  showPassword() {
+    this.hide = !this.hide;
+
+    if (this.hide) {
+      this.type = 'password';
+    } else {
+      this.type = 'text';
+    }
+  }
 
 }
